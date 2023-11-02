@@ -10,7 +10,9 @@ int main(int argc, char* argv[]) {
 
     huffman f(argv[1], argv[2]);
     f.decompress();
-    cout << "Decompressed successfully" << endl;
+    // cout<<"                                            Encoding........"<<endl;
+
+    cout<<"                                            Decompressed successfully" << endl;
 
     return 0;
 }
