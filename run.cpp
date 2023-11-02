@@ -1,119 +1,232 @@
 #include <iostream>
 #include <cstdlib>
-#include <windows.h>
-using namespace std;  // for the system() function
+#include <windows.h>  // for the system() function
+using namespace std;  
 
-int main() {
+int main();
 
-    cout<<"hllo"<<endl;
-    cout<<endl;
-    cout<<endl;
-    cout<<"                          888    888           .d888      888b     d888               8888888888 d8b 888               888b     d888"<<endl;
-    cout<<"                          888    888          d88P\"       8888b   d8888               888        Y8P 888               8888b   d8888"<<endl;
-    cout<<"                          888    888          888         88888b.d88888               888            888               88888b.d88888"<<endl;
-    cout<<"                          8888888888 888  888 888888      888Y88888P888  .d88b.       8888888    888 888  .d88b.       888Y88888P888  8888b.  88888b.   8888b.   .d88b.   .d88b.  888d888"<<endl;
-    cout<<"                          888    888 888  888 888         888 Y888P 888 d8P  Y8b      888        888 888 d8P  Y8b      888 Y888P 888     \"88b 888 \"88b     \"88b d88P\"88b d8P  Y8b 888P\""<<endl;
-    cout<<"888888 888888 888888      888    888 888  888 888         888  Y8P  888 88888888      888        888 888 88888888      888  Y8P  888 .d888888 888  888 .d888888 888  888 88888888 888          888888 888888 888888"<<endl;
-    cout<<"                          888    888 Y88b 888 888         888   \"   888 Y8b.          888        888 888 Y8b.          888   \"   888 888  888 888  888 888  888 Y88b 888 Y8b.     888"<<endl;
-    cout<<"                          888    888  \"Y88888 888         888       888  \"Y8888       888        888 888  \"Y8888       888       888 \"Y888888 888  888 \"Y888888  \"Y88888  \"Y8888  888"<<endl;
-    cout<<"                                                                                                                                                                     888"<<endl;
-    cout<<"                                                                                                                                                                Y8b d88P"<<endl;
-    cout<<"                                                                                                                                                                 \"Y88P\""<<endl;
+string filename , huffname , outname;
+string huffedfilename;
+int option;
 
+void encodePanel()
+{
+  
+    jump3:
+    system("cls");
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                            *********************COMPRESSOR******************"<<endl;
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                            *          Press 1 To Compress                  *"<<endl;
+    cout<<"                                            *          Press 2 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                                       Enter an Option : ";
+    cin>>option;
+    if(option == 1){
+    cout<<"                                            type FILENAME.txt and Expected HUFFEDFILENAME.huf"<<endl;
+        cout<<"                                        ---->";
+        cin>>filename;
+        cin.ignore();
+        cin>>huffname;
+        cout<<"\n";
+    cout<<"                                            Encoding........"<<endl;
+        cout<<"\n";
+        cout<<"\n";
 
+                system("g++ encode.cpp huffman.cpp -o main");
+                string command = "main " + filename + " " + huffname;
+                system(command.c_str());
 
-//                           888    888           .d888      888b     d888               8888888888 d8b 888               888b     d888
-//                           888    888          d88P"       8888b   d8888               888        Y8P 888               8888b   d8888
-//                           888    888          888         88888b.d88888               888            888               88888b.d88888
-//                           8888888888 888  888 888888      888Y88888P888  .d88b.       8888888    888 888  .d88b.       888Y88888P888  8888b.  88888b.   8888b.   .d88b.   .d88b.  888d888
-//                           888    888 888  888 888         888 Y888P 888 d8P  Y8b      888        888 888 d8P  Y8b      888 Y888P 888     "88b 888 "88b     "88b d88P"88b d8P  Y8b 888P"
-// 888888 888888 888888      888    888 888  888 888         888  Y8P  888 88888888      888        888 888 88888888      888  Y8P  888 .d888888 888  888 .d888888 888  888 88888888 888          888888 888888 888888
-//                           888    888 Y88b 888 888         888   "   888 Y8b.          888        888 888 Y8b.          888   "   888 888  888 888  888 888  888 Y88b 888 Y8b.     888
-//                           888    888  "Y88888 888         888       888  "Y8888       888        888 888  "Y8888       888       888 "Y888888 888  888 "Y888888  "Y88888  "Y8888  888
-//                                                                                                                                                                      888
-//                                                                                                                                                                 Y8b d88P
-//                                                                                                                                                                  "Y88P"
-
-
-
-
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x000F);
-    int choice;
-    while(choice)
+                Sleep(2000);
+                goto jump3;
+    }
+    else if(option == 2)
     {
-        string filename , huffname , outname;
-        string huffedfilename;
-        cout<<endl<<endl;
-        cout<<"                                      1 for compressing"<<endl;
-        cout<<"                                      2 for decompressing"<<endl;
-        cout<<"                                      3 for Deleting"<<endl;
-        cout<<endl;
-        cout<<"                                      0 for Exit"<<endl;
-        cin>>choice;
+        system("cls");
+        main();
+    }
+    else{goto jump3;}
 
-        if (choice == 0) {
-            // Exit the program when the user enters 0
-            break;
-            ExitProcess(0);
-        }
+    //return 1;
+}
 
-        else if(choice == 1)
-        {
-            cout<<"type filename and expected huffed file"<<endl;
-            cout<<"-----> ";
-            cin>>filename;
-            cin.ignore();
-            cin>>huffname;
-
-
-            system("g++ encode.cpp huffman.cpp -o main");
-            string command = "main " + filename + " " + huffname;
-            system(command.c_str());
-        }
-
-        else if (choice == 2)
-        {
-
-            cout<<"type huffed filename and expected output file"<<endl;
-            cout<<"-----> ";
+int decodePanel()
+{
+    
+    jump4:
+    system("cls");
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                            ********************DECOMPRESSOR*****************"<<endl;
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                            *          Press 1 To deCompress                  *"<<endl;
+    cout<<"                                            *          Press 2 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                                       Enter an Option : ";
+    cin>>option;
+     if(option == 1){
+    cout<<"\n";
+        cout<<"                                        type HUFFEDFILENAME.huf and Expected OUTPUTILENAME.txt"<<endl;
+        cout<<"                                        ---->";
             cin>>huffedfilename;
             cin.ignore();
             cin>>outname;
-
+        cout<<"\n";
+    cout<<"                                            Decoding........"<<endl;
+        cout<<"\n";
+        cout<<"\n";
             system("g++ decode.cpp huffman.cpp -o main");
             string command = "main " + huffedfilename + " " + outname;
             system(command.c_str());
 
+            Sleep(2000);
+            goto jump4;
+     }
+     else if(option == 2)
+    {
+        system("cls");
+        main();
+    }
+    else{goto jump4;}
+    
+    // return 1;
 
-        }
+}
 
-        else if (choice == 3)
-        {
+int deletePanel()
+{
+            
+            
+   
+    jump5:
+    system("cls");
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                            ************************DELETER*****************"<<endl;
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                            *          Press 1 To delete                    *"<<endl;
+    cout<<"                                            *          Press 2 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                            *************************************************"<<endl;
+    cout<<"                                                       Enter an Option : ";
+    cin>>option;
+     if(option == 1){
             string delfile;
+    cout<<"                                            Enter File Name with extension: ";
             cin>>delfile;
-            //cin>>command;
             int res = remove(delfile.c_str());
+            //Sleep(2000);
             if(res == 0)
             {
-                cout<<"del succ";
+                cout<<"                                                       Deleted Succesfully"<<endl;
+                Sleep(2000);
+                goto jump5;
             }
+            else
+            {
+                cout<<"                                                      Deleted UnSuccesfully"<<endl;
+                Sleep(2000);
+                goto jump5;
+            }
+     }
+    else if(option == 2)
+        {
+            system("cls");
+            main();
         }
+        else{goto jump5;}
+
+
+        // return 1;
+
+        
+}
+
+
+int main() {
+
+    // cout<<"hllo"<<endl;
+    // cout<<endl;
+    // cout<<endl;
+    // cout<<"                          888    888           .d888      888b     d888               8888888888 d8b 888               888b     d888"<<endl;
+    // cout<<"                          888    888          d88P\"       8888b   d8888               888        Y8P 888               8888b   d8888"<<endl;
+    // cout<<"                          888    888          888         88888b.d88888               888            888               88888b.d88888"<<endl;
+    // cout<<"                          8888888888 888  888 888888      888Y88888P888  .d88b.       8888888    888 888  .d88b.       888Y88888P888  8888b.  88888b.   8888b.   .d88b.   .d88b.  888d888"<<endl;
+    // cout<<"                          888    888 888  888 888         888 Y888P 888 d8P  Y8b      888        888 888 d8P  Y8b      888 Y888P 888     \"88b 888 \"88b     \"88b d88P\"88b d8P  Y8b 888P\""<<endl;
+    // cout<<"888888 888888 888888      888    888 888  888 888         888  Y8P  888 88888888      888        888 888 88888888      888  Y8P  888 .d888888 888  888 .d888888 888  888 88888888 888          888888 888888 888888"<<endl;
+    // cout<<"                          888    888 Y88b 888 888         888   \"   888 Y8b.          888        888 888 Y8b.          888   \"   888 888  888 888  888 888  888 Y88b 888 Y8b.     888"<<endl;
+    // cout<<"                          888    888  \"Y88888 888         888       888  \"Y8888       888        888 888  \"Y8888       888       888 \"Y888888 888  888 \"Y888888  \"Y88888  \"Y8888  888"<<endl;
+    // cout<<"                                                                                                                                                                     888"<<endl;
+    // cout<<"                                                                                                                                                                Y8b d88P"<<endl;
+    // cout<<"                                                                                                                                                                 \"Y88P\""<<endl;
+
+
+    int choice;
+
+
+    system("MODE 150, 40");
+    system("Color 7C");
+
+
+    jump1:
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+
+
+    system("cls");
+    cout<<"\n"<<endl;
+
+
+
+    cout<<"                                                       *  Press 1 For COMPRESSING      *"<<endl;
+    cout<<"                                                       *  Press 2 For DECOMPRESSING    *"<<endl;
+    cout<<"                                                       *  Press 3 For DELETING         *"<<endl;
+    cout<<"                                                       *  Press 0 To  Exit             *"<<endl;
+    cout<<"\n"<<endl;
+    cout<<"                                                          Enter Your Choice : ";
+    cin>>choice;
+    
+    
+    
+
+    if(choice == 1)
+    {
+        
+        //system("cls");
+        encodePanel();
     }
-    // Compile the first .cpp file (file1.cpp)
-    //system("g++ -o file1.exe file1.cpp");
 
-    // Run the first executable with an argument
-    //system("./main inputFile.txt amrhuf.huf");
+    else if (choice == 2)
+    {
+        //system("cls");
+        decodePanel();
 
-    // system("g++ decode.cpp huffman.cpp -o main");
-    // system("main amrtomarhuf.huf hedarFile.txt");
+    }
 
-    // Compile the second .cpp file (file2.cpp)
-    //system("g++ -o file2.exe file2.cpp");
-// system("main amrtomarhuf.huf hedarFile.txt");
-    // Run the second executable with a different argument
-    //system("./file2.exe argument2");
+    else if (choice == 3)
+    {
+        //system("cls");
+        deletePanel();
+    }
 
+
+    else if (choice == 0) {
+
+        // Exit the program when the user enters 0
+        ExitProcess(0);
+    }
+
+    
     return 0;
 }
