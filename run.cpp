@@ -17,22 +17,24 @@ void encodePanel()
     cout<<"\n";
     cout<<"\n";
     cout<<"\n";
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            *********************COMPRESSOR******************"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            *          Press 1 To Compress                  *"<<endl;
-    cout<<"                                            *          Press 2 To Go Back to Main Menu      *"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                                       Enter an Option : ";
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                ***************C O M P R E S S O R***************"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                *          Press 1 To Compress                  *"<<endl;
+    cout<<"                                                *          Press 2 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                                *                                               *"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                           Enter an Option : ";
     cin>>option;
     if(option == 1){
-    cout<<"                                            type FILENAME.txt and Expected HUFFEDFILENAME.huf"<<endl;
-        cout<<"                                        ---->";
+        cout<<"\n";
+    cout<<"                                                type FILENAME.txt and Expected HUFFEDFILENAME.huf"<<endl;
+        cout<<"                                            ---->";
         cin>>filename;
         cin.ignore();
         cin>>huffname;
         cout<<"\n";
-    cout<<"                                            Encoding........"<<endl;
+    cout<<"                                                Encoding........"<<endl;
         cout<<"\n";
         cout<<"\n";
 
@@ -63,23 +65,25 @@ int decodePanel()
     cout<<"\n";
     cout<<"\n";
     cout<<"\n";
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            ********************DECOMPRESSOR*****************"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            *          Press 1 To deCompress                  *"<<endl;
-    cout<<"                                            *          Press 2 To Go Back to Main Menu      *"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                                       Enter an Option : ";
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                *************d e C O M P R E S S O R*************"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                *          Press 1 To deCompress                *"<<endl;
+    cout<<"                                                *          Press 2 To Read .huf File            *"<<endl;
+    cout<<"                                                *          Press 3 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                                *                                               *"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                           Enter an Option : ";
     cin>>option;
      if(option == 1){
     cout<<"\n";
-        cout<<"                                        type HUFFEDFILENAME.huf and Expected OUTPUTILENAME.txt"<<endl;
-        cout<<"                                        ---->";
+        cout<<"                                            type HUFFEDFILENAME.huf and Expected OUTPUTILENAME.txt"<<endl;
+        cout<<"                                            ---->";
             cin>>huffedfilename;
             cin.ignore();
             cin>>outname;
         cout<<"\n";
-    cout<<"                                            Decoding........"<<endl;
+    cout<<"                                                Decoding........"<<endl;
         cout<<"\n";
         cout<<"\n";
             system("g++ decode.cpp huffman.cpp -o main");
@@ -89,7 +93,27 @@ int decodePanel()
             Sleep(2000);
             decodePanel();
      }
-     else if(option == 2)
+     else if(option ==2)
+     {
+        cout<<"\n";
+        cout<<"                                            type HUFFEDFILENAME.huf"<<endl;
+        cout<<"                                            ---->";
+            cin>>huffedfilename;
+             cout<<"\n";
+    cout<<"                                                Opening..............."<<endl;
+        cout<<"\n";
+        cout<<"\n";
+    cout<<"                                                S o m e t h i n g    S c a r y   i s   C o m i n g"<<endl;
+    cout<<"\n";
+    cout<<"\n";
+        system("g++ hufFileOpener.cpp -o main");
+        string command = "main " + huffedfilename;
+        system(command.c_str());
+
+            Sleep(10000);
+           decodePanel();
+     }
+     else if(option == 3)
     {
         system("cls");
         main();
@@ -109,22 +133,23 @@ int countPanel()
     cout<<"\n";
     cout<<"\n";
     cout<<"\n";
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            ************************COUNTER******************"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            *          Press 1 To COUNT WORDS               *"<<endl;
-    cout<<"                                            *          Press 2 To COUNT SPECIFIC WORDS      *"<<endl;
-    cout<<"                                            *          Press 3 To Go Back to Main Menu      *"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                                       Enter an Option : ";
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                ******************C O U N T E R******************"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                *          Press 1 To Count Words               *"<<endl;
+    cout<<"                                                *          Press 2 To Count Specific Words      *"<<endl;
+    cout<<"                                                *          Press 3 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                                *                                               *"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                           Enter an Option : ";
     cin>>option;
      if(option == 1){
     cout<<"\n";
-        cout<<"                                        type FILENAME.txt"<<endl;
-        cout<<"                                        ---->";
-            cin>>filename;
+    cout<<"                                                type FILENAME.txt"<<endl;
+    cout<<"                                                ---->";
+            cin>>filename; 
         cout<<"\n";
-    cout<<"                                            Counting........"<<endl;
+    cout<<"                                                Counting........"<<endl;
         cout<<"\n";
         cout<<"\n";
             system("g++ count.cpp -o main");
@@ -137,13 +162,13 @@ int countPanel()
      else if(option == 2)
      {
             cout<<"\n";
-        cout<<"                                        type FILENAME.txt and the WORD"<<endl;
-        cout<<"                                        ---->";
+    cout<<"                                                type FILENAME.txt and the WORD"<<endl;
+    cout<<"                                                ---->";
             cin>>filename;
             cin.ignore();
             cin>>specificWord;
         cout<<"\n";
-    cout<<"                                            Counting........"<<endl;
+    cout<<"                                                Counting........"<<endl;
         cout<<"\n";
         cout<<"\n";
             system("g++ wordcount.cpp -o main");
@@ -174,29 +199,33 @@ int deletePanel()
     cout<<"\n";
     cout<<"\n";
     cout<<"\n";
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            ************************DELETER*****************"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                            *          Press 1 To delete                    *"<<endl;
-    cout<<"                                            *          Press 2 To Go Back to Main Menu      *"<<endl;
-    cout<<"                                            *************************************************"<<endl;
-    cout<<"                                                       Enter an Option : ";
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                ******************D E L E T E R******************"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                *          Press 1 To delete                    *"<<endl;
+    cout<<"                                                *          Press 2 To Go Back to Main Menu      *"<<endl;
+    cout<<"                                                *                                               *"<<endl;
+    cout<<"                                                *************************************************"<<endl;
+    cout<<"                                                           Enter an Option : ";
     cin>>option;
+    cout<<"\n";
      if(option == 1){
             string delfile;
-    cout<<"                                            Enter File Name with extension: ";
+    cout<<"                                                Enter File Name with extension: ";
             cin>>delfile;
             int res = remove(delfile.c_str());
             //Sleep(2000);
             if(res == 0)
             {
-                cout<<"                                                       Deleted Succesfully"<<endl;
+                cout<<"\n";
+                cout<<"                                                            Deleted Succesfully!"<<endl;
                 Sleep(2000);
                 deletePanel();
             }
             else
             {
-                cout<<"                                                      Deleted UnSuccesfully"<<endl;
+                cout<<"\n";
+                cout<<"                                                            Deletetion UnSuccesful!"<<endl;
                 Sleep(2000);
                 deletePanel();
             }
@@ -214,52 +243,72 @@ int deletePanel()
         
 }
 
+int exitPanel()
+{
+   
+    system("cls");
+   cout<<"\n\n\n\n\n\n\n";
+    cout << "                                    ___     ___     __                                   ___                  __" << endl;
+    cout << "                                     |     |__     |__)     |\\/|    |    |\\ |     /\\      |     |    |\\ |    / _`" << endl;
+    cout << "                                     |     |___    |  \\     |  |    |    | \\|    /~~\\     |     |    | \\|    \\__>" << endl;
+
+    Sleep(3000);
+}
+
 
 int main() {
 
-    // cout<<"hllo"<<endl;
-    // cout<<endl;
-    // cout<<endl;
-    // cout<<"                          888    888           .d888      888b     d888               8888888888 d8b 888               888b     d888"<<endl;
-    // cout<<"                          888    888          d88P\"       8888b   d8888               888        Y8P 888               8888b   d8888"<<endl;
-    // cout<<"                          888    888          888         88888b.d88888               888            888               88888b.d88888"<<endl;
-    // cout<<"                          8888888888 888  888 888888      888Y88888P888  .d88b.       8888888    888 888  .d88b.       888Y88888P888  8888b.  88888b.   8888b.   .d88b.   .d88b.  888d888"<<endl;
-    // cout<<"                          888    888 888  888 888         888 Y888P 888 d8P  Y8b      888        888 888 d8P  Y8b      888 Y888P 888     \"88b 888 \"88b     \"88b d88P\"88b d8P  Y8b 888P\""<<endl;
-    // cout<<"888888 888888 888888      888    888 888  888 888         888  Y8P  888 88888888      888        888 888 88888888      888  Y8P  888 .d888888 888  888 .d888888 888  888 88888888 888          888888 888888 888888"<<endl;
-    // cout<<"                          888    888 Y88b 888 888         888   \"   888 Y8b.          888        888 888 Y8b.          888   \"   888 888  888 888  888 888  888 Y88b 888 Y8b.     888"<<endl;
-    // cout<<"                          888    888  \"Y88888 888         888       888  \"Y8888       888        888 888  \"Y8888       888       888 \"Y888888 888  888 \"Y888888  \"Y88888  \"Y8888  888"<<endl;
-    // cout<<"                                                                                                                                                                     888"<<endl;
-    // cout<<"                                                                                                                                                                Y8b d88P"<<endl;
-    // cout<<"                                                                                                                                                                 \"Y88P\""<<endl;
+
+    system("MODE 150, 40");
+    system("Color 0C");
+    system("cls");
+
+
+    cout<<"\n";
+    cout<<"\n";
+    cout << "                               _    _        __   __  __        ______ _ _        __  __     \n";
+    cout << "                              | |  | |      / _| |  \\/  |      |  ____(_) |      |  \\/  |    \n";
+    cout << "                              | |__| |_   _| |_  | \\  / | ___  | |__   _| | ___  | \\  / | __ _ _ __   __ _  __ _  ___ _ __\n";
+    cout << "                              |  __  | | | |  _| | |\\/| |/ _ \\ |  __| | | |/ _ \\ | |\\/| |/ _` | '_ \\ / _` |/ _` |/ _ \\ '__|\n";
+    cout << "                              | |  | | |_| | |   | |  | |  __/ | |    | | |  __/ | |  | | (_| | | | | (_| | (_| |  __/ |   \n";
+    cout << "                              |_|  |_|\\__,_|_|   |_|  |_|\\___| |_|    |_|_|\\___| |_|  |_|\\__,_|_| |_|\\__,_|\\__, |\\___|_|   \n";
+    cout << "                                                                                                          __/ |          \n";
+    cout << "                                                                                                         |___/           \n";
+    cout<<"                                                          Developed by d e v O v e r f l o w\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+
+
+//   _    _        __   __  __        ______ _ _        __  __                                   
+//  | |  | |      / _| |  \/  |      |  ____(_) |      |  \/  |                                  
+//  | |__| |_   _| |_  | \  / | ___  | |__   _| | ___  | \  / | __ _ _ __   __ _  __ _  ___ _ __ 
+//  |  __  | | | |  _| | |\/| |/ _ \ |  __| | | |/ _ \ | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
+//  | |  | | |_| | |   | |  | |  __/ | |    | | |  __/ | |  | | (_| | | | | (_| | (_| |  __/ |   
+//  |_|  |_|\__,_|_|   |_|  |_|\___| |_|    |_|_|\___| |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|   
+//                                                                                __/ |          
+//                                                                               |___/           
 
 
     int choice;
 
 
-    system("MODE 150, 40");
-    system("Color 7C");
 
-
-   
-    cout<<"\n";
-    cout<<"\n";
-    cout<<"\n";
-    cout<<"\n";
-
-
-    system("cls");
     cout<<"\n"<<endl;
 
 
+    cout<<"                                                          *********************************"<<endl;
+    cout<<"                                                          *  Press 1 For COMPRESSING      *"<<endl;
+    cout<<"                                                          *  Press 2 For DECOMPRESSING    *"<<endl;
+    cout<<"                                                          *  Press 3 For COUNTING         *"<<endl;
+    cout<<"                                                          *  Press 4 For DELETING         *"<<endl;
+    cout<<"                                                          *                               *"<<endl;
+    cout<<"                                                          *  Press 0 To  Exit             *"<<endl;
+    cout<<"                                                          *********************************"<<endl;
 
-    cout<<"                                                       *  Press 1 For COMPRESSING      *"<<endl;
-    cout<<"                                                       *  Press 2 For DECOMPRESSING    *"<<endl;
-    cout<<"                                                       *  Press 3 For COUNTING        *"<<endl;
-    cout<<"                                                       *  Press 4 For DELETING         *"<<endl;
-    cout<<"                                                       *                               *"<<endl;
-    cout<<"                                                       *  Press 0 To  Exit             *"<<endl;
     cout<<"\n"<<endl;
-    cout<<"                                                          Enter Your Choice : ";
+    cout<<"                                                             Enter Your Choice : ";
     cin>>choice;
     
     
@@ -294,6 +343,7 @@ int main() {
     else if (choice == 0) {
 
         // Exit the program when the user enters 0
+        exitPanel();
         ExitProcess(0);
     }
 

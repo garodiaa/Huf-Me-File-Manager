@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
         inputFile.close();
     } 
     else {
-        cerr << "Unable to open the file." << endl;
+        cout << "                                          Error File" << endl;
         return 1;
     }
 

@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     string wordToCount = argv[2];
     string word;
     int wordCount = 0;
-
+    transform(wordToCount.begin(), wordToCount.end(), wordToCount.begin(), ::tolower);
     while (inputFile >> word) {
         // Convert the word to lowercase for case-insensitive counting
         transform(word.begin(), word.end(), word.begin(), ::tolower);
