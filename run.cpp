@@ -252,7 +252,7 @@ int exitPanel()
     cout << "                                     |     |__     |__)     |\\/|    |    |\\ |     /\\      |     |    |\\ |    / _`" << endl;
     cout << "                                     |     |___    |  \\     |  |    |    | \\|    /~~\\     |     |    | \\|    \\__>" << endl;
 
-    Sleep(3000);
+    Sleep(2000);
 }
 
 
@@ -260,7 +260,7 @@ int main() {
 
 
     system("MODE 150, 40");
-    system("Color 0C");
+    system("Color F5");
     system("cls");
 
 

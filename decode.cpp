@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
     f.decompress();
     // cout<<"                                            Encoding........"<<endl;
 
-    cout<<"                                            Decompressed successfully" << endl;
+    cout<<"                                                           Decompressed successfully" << endl;
 
     return 0;
 }

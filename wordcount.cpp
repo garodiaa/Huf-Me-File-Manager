@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
     }
     inputFile.close();
 
-    cout << "                                      The word \"" << wordToCount << "\" appears " << wordCount << " times in the file." << endl;
+    cout << "                                                 The word \"" << wordToCount << "\" appears " << wordCount << " times in the file." << endl;
 
     // cout << "                                          Word count: " << wordCount << endl;
     // cout<<"                                            Encoding........"<<endl;

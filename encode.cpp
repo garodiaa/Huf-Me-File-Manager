@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     f.compress();
     // cout<<"                                            Encoding........"<<endl;
 
-    cout <<"                                           Compressed successfully" << endl;
+    cout <<"                                                             Compressed successfully" << endl;
     
     return 0;
 }

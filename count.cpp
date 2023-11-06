@@ -26,11 +26,11 @@ int main(int argc, char* argv[]) {
         inputFile.close();
     } 
     else {
-        cout << "                                          Error File" << endl;
+        cout << "                                                Error File" << endl;
         return 1;
     }
 
-    cout << "                                          Word count: " << wordCount << endl;
+    cout << "                                                                  Word count: " << wordCount << endl;
     // cout<<"                                            Encoding........"<<endl;
     
     return 0;
