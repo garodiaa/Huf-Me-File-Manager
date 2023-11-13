@@ -1,5 +1,5 @@
 #include "huffman.hpp"
-
+//Create tree
 void huffman::createArr() {
     for (int i = 0; i < 128; i++) {
         arr.push_back(new Node());
@@ -8,56 +8,7 @@ void huffman::createArr() {
     }
 }
 
-void huffman::traverse(Node* r, string str) {
-    if (r->left == NULL && r->right == NULL) {
-        r->code = str;
-        return;
-    }
-
-    traverse(r->left, str + '0');
-    traverse(r->right, str + '1');
-}
-
-int huffman::binToDec(string inStr) {
-    int res = 0;
-    for (auto c : inStr) {
-        res = res * 2 + c - '0';
-    }
-    return res;
-}
-
-string huffman::decToBin(int inNum) {
-    string temp = "", res = "";
-    while (inNum > 0) {
-        temp += (inNum % 2 + '0');
-        inNum /= 2;
-    }
-    res.append(8 - temp.length(), '0');
-    for (int i = temp.length() - 1; i >= 0; i--) {
-        res += temp[i];
-    }
-    return res;
-}
-
-void huffman::buildTree(char a_code, string& path) {
-    Node* curr = root;
-    for (int i = 0; i < path.length(); i++) {
-        if (path[i] == '0') {
-            if (curr->left == NULL) {
-                curr->left = new Node();
-            }
-            curr = curr->left;
-        }
-        else if (path[i] == '1') {
-            if (curr->right == NULL) {
-                curr->right = new Node();
-            }
-            curr = curr->right;
-        }
-    }
-    curr->data = a_code;
-}
-
+//create Min heap
 void huffman::createMinHeap() {
     char id;
     inFile.open(inFileName, ios::in);
@@ -76,6 +27,8 @@ void huffman::createMinHeap() {
     }
 }
 
+
+//create tree
 void huffman::createTree() {
     //Creating Huffman Tree with the Min Heap created earlier
     Node *left, *right;
@@ -97,11 +50,28 @@ void huffman::createTree() {
     }
 }
 
+//Traverse
+void huffman::traverse(Node* r, string str) {
+    if (r->left == NULL && r->right == NULL) {
+        r->code = str;
+        return;
+    }
+
+    traverse(r->left, str + '0');
+    traverse(r->right, str + '1');
+}
+
+
+
+//create codes
 void huffman::createCodes() {
     //Traversing the Huffman Tree and assigning specific codes to each character
     traverse(root, "");
 }
 
+
+
+//save encoded file
 void huffman::saveEncodedFile() {
     //Saving encoded (.huf) file
     inFile.open(inFileName, ios::in);
@@ -157,6 +127,87 @@ void huffman::saveEncodedFile() {
 	outFile.close();
 }
 
+//-------------------------------------------------------
+
+//binary to decimal
+int huffman::binToDec(string inStr) {
+    int res = 0;
+    for (auto c : inStr) {
+        res = res * 2 + c - '0';
+    }
+    return res;
+}
+
+//decimal to binary
+string huffman::decToBin(int inNum) {
+    string temp = "", res = "";
+    while (inNum > 0) {
+        temp += (inNum % 2 + '0');
+        inNum /= 2;
+    }
+    res.append(8 - temp.length(), '0');
+    for (int i = temp.length() - 1; i >= 0; i--) {
+        res += temp[i];
+    }
+    return res;
+}
+
+
+//build tree
+void huffman::buildTree(char a_code, string& path) {
+    Node* curr = root;
+    for (int i = 0; i < path.length(); i++) {
+        if (path[i] == '0') {
+            if (curr->left == NULL) {
+                curr->left = new Node();
+            }
+            curr = curr->left;
+        }
+        else if (path[i] == '1') {
+            if (curr->right == NULL) {
+                curr->right = new Node();
+            }
+            curr = curr->right;
+        }
+    }
+    curr->data = a_code;
+}
+
+
+
+//get tree
+void huffman::getTree() {
+    inFile.open(inFileName, ios::in | ios::binary);
+    //Reading size of MinHeap
+    unsigned char size;
+    inFile.read(reinterpret_cast<char*>(&size), 1);
+    root = new Node();
+    //next size * (1 + 16) characters contain (char)data and (string)code[in decimal]
+    for(int i = 0; i < size; i++) {
+        char aCode;
+        unsigned char hCodeC[16];
+        inFile.read(&aCode, 1);
+        inFile.read(reinterpret_cast<char*>(hCodeC), 16);
+        //converting decimal characters into their binary equivalent to obtain code
+        string hCodeStr = "";
+        for (int i = 0; i < 16; i++) {
+            hCodeStr += decToBin(hCodeC[i]);
+        }
+        //Removing padding by ignoring first (127 - curr->code.length()) '0's and next '1' character
+        int j = 0;
+        while (hCodeStr[j] == '0') {
+            j++;
+        }
+        hCodeStr = hCodeStr.substr(j+1);
+        //Adding node with aCode data and hCodeStr string to the huffman tree
+        buildTree(aCode, hCodeStr);
+    }
+    inFile.close();
+}
+
+
+
+//save decoded file
 void huffman::saveDecodedFile() {
     inFile.open(inFileName, ios::in | ios::binary);
     outFile.open(outFileName, ios::out);
@@ -204,34 +255,7 @@ void huffman::saveDecodedFile() {
     outFile.close();
 }
 
-void huffman::getTree() {
-    inFile.open(inFileName, ios::in | ios::binary);
-    //Reading size of MinHeap
-    unsigned char size;
-    inFile.read(reinterpret_cast<char*>(&size), 1);
-    root = new Node();
-    //next size * (1 + 16) characters contain (char)data and (string)code[in decimal]
-    for(int i = 0; i < size; i++) {
-        char aCode;
-        unsigned char hCodeC[16];
-        inFile.read(&aCode, 1);
-        inFile.read(reinterpret_cast<char*>(hCodeC), 16);
-        //converting decimal characters into their binary equivalent to obtain code
-        string hCodeStr = "";
-        for (int i = 0; i < 16; i++) {
-            hCodeStr += decToBin(hCodeC[i]);
-        }
-        //Removing padding by ignoring first (127 - curr->code.length()) '0's and next '1' character
-        int j = 0;
-        while (hCodeStr[j] == '0') {
-            j++;
-        }
-        hCodeStr = hCodeStr.substr(j+1);
-        //Adding node with aCode data and hCodeStr string to the huffman tree
-        buildTree(aCode, hCodeStr);
-    }
-    inFile.close();
-}
+
 
 void huffman::compress() {
     createMinHeap();

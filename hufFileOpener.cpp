@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <windows.h> 
+
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -10,6 +12,26 @@ int main(int argc, char* argv[]) {
         cout << "Failed to detect Files";
 	    exit(1);
 	}
+
+    if (GetFileAttributesA(argv[1]) == INVALID_FILE_ATTRIBUTES) {
+        cout<<"\n";
+        cout<<"\n";
+        cout<<"                                                  Error: file not found." << endl;
+        Sleep(2000);
+        exit(1);
+    }
+
+
+    cout<<"\n";
+    cout<<"                                                Opening..............."<<endl;
+        cout<<"\n";
+        cout<<"\n";
+    Sleep(1000);
+    cout<<"                                                S o m e t h i n g    S c a r y   i s   C o m i n g"<<endl;
+    cout<<"\n";
+    cout<<"\n";
+    Sleep(1000);
+
 
     // Open the .huf file for reading in binary mode
     ifstream inputFile(argv[1], ios::binary);
@@ -27,6 +49,7 @@ int main(int argc, char* argv[]) {
             cout << ((byte >> i) & 1);
         }
     }
+    Sleep(10000);
 
     inputFile.close();
 

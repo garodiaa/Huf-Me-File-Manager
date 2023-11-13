@@ -21,6 +21,7 @@ struct Node {
     }
 };
 
+//
 class huffman {
     private:
         vector <Node*> arr;

@@ -3,6 +3,8 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <windows.h> 
+
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -10,6 +12,13 @@ int main(int argc, char* argv[]) {
         cout << "Failed to detect Files";
 		exit(1);
 	}
+
+    if (GetFileAttributesA(argv[1]) == INVALID_FILE_ATTRIBUTES) {
+        cout<<"\n";
+        cout<<"\n";
+        cout<<"                                                Error: File not found." << endl;
+        exit(1);
+    }
 
 
     
@@ -27,8 +36,11 @@ int main(int argc, char* argv[]) {
         }
     }
     inputFile.close();
-
-    cout << "                                                 The word \"" << wordToCount << "\" appears " << wordCount << " times in the file." << endl;
+    cout<<"                                                Counting........"<<endl;
+    Sleep(1000);
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"                                                 The word \"" << wordToCount << "\" appears " << wordCount << " times in the file." << endl;
 
     // cout << "                                          Word count: " << wordCount << endl;
     // cout<<"                                            Encoding........"<<endl;

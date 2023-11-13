@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <windows.h> 
+
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -9,6 +11,12 @@ int main(int argc, char* argv[]) {
         cout << "Failed to detect Files";
 		exit(1);
 	}
+    if (GetFileAttributesA(argv[1]) == INVALID_FILE_ATTRIBUTES) {
+        cout<<"\n";
+        cout<<"\n";
+        cout<<"                                                Error: File not found." << endl;
+        exit(1);
+    }
 
 
    ifstream inputFile(argv[1]);
@@ -29,7 +37,10 @@ int main(int argc, char* argv[]) {
         cout << "                                                Error File" << endl;
         return 1;
     }
-
+    cout<<"                                                Counting........"<<endl;
+    Sleep(1000);
+    cout<<"\n";
+    cout<<"\n";
     cout << "                                                                  Word count: " << wordCount << endl;
     // cout<<"                                            Encoding........"<<endl;
     

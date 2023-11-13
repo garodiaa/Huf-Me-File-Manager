@@ -34,9 +34,9 @@ void encodePanel()
         cin.ignore();
         cin>>huffname;
         cout<<"\n";
-    cout<<"                                                Encoding........"<<endl;
-        cout<<"\n";
-        cout<<"\n";
+    // cout<<"                                                Encoding........"<<endl;
+    //     cout<<"\n";
+    //     cout<<"\n";
 
                 system("g++ encode.cpp huffman.cpp -o main");
                 string command = "main " + filename + " " + huffname;
@@ -83,7 +83,6 @@ int decodePanel()
             cin.ignore();
             cin>>outname;
         cout<<"\n";
-    cout<<"                                                Decoding........"<<endl;
         cout<<"\n";
         cout<<"\n";
             system("g++ decode.cpp huffman.cpp -o main");
@@ -99,18 +98,12 @@ int decodePanel()
         cout<<"                                            type HUFFEDFILENAME.huf"<<endl;
         cout<<"                                            ---->";
             cin>>huffedfilename;
-             cout<<"\n";
-    cout<<"                                                Opening..............."<<endl;
-        cout<<"\n";
-        cout<<"\n";
-    cout<<"                                                S o m e t h i n g    S c a r y   i s   C o m i n g"<<endl;
-    cout<<"\n";
-    cout<<"\n";
+
         system("g++ hufFileOpener.cpp -o main");
         string command = "main " + huffedfilename;
         system(command.c_str());
 
-            Sleep(10000);
+            // Sleep(10000);
            decodePanel();
      }
      else if(option == 3)
@@ -149,14 +142,14 @@ int countPanel()
     cout<<"                                                ---->";
             cin>>filename; 
         cout<<"\n";
-    cout<<"                                                Counting........"<<endl;
-        cout<<"\n";
-        cout<<"\n";
+    // cout<<"                                                Counting........"<<endl;
+    //     cout<<"\n";
+    //     cout<<"\n";
             system("g++ count.cpp -o main");
             string command = "main " + filename;
             system(command.c_str());
 
-            Sleep(5000);
+            Sleep(4000);
            countPanel();
      }
      else if(option == 2)
@@ -168,14 +161,14 @@ int countPanel()
             cin.ignore();
             cin>>specificWord;
         cout<<"\n";
-    cout<<"                                                Counting........"<<endl;
-        cout<<"\n";
-        cout<<"\n";
+    // cout<<"                                                Counting........"<<endl;
+    //     cout<<"\n";
+    //     cout<<"\n";
             system("g++ wordcount.cpp -o main");
             string command = "main " + filename + " " + specificWord;
             system(command.c_str());
 
-            Sleep(5000);
+            Sleep(4000);
             countPanel();
      }
      else if(option == 3)
