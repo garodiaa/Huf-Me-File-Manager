@@ -9,6 +9,10 @@
 
 ## Data Structure Course Project in C++ for File Compression and Management
 
+### Video Presentation
+
+[Watch the presentation video](https://youtu.be/wCsKOROX0lM)
+
 ### Overview
 
 Huf-Me-File-Manager is a C++ console-based application created for a Data Structure Lab course. The project implements Huffman Encoding to compress and decompress `.txt` files while bundling helpful file management utilities like word counting and safe deletion.
